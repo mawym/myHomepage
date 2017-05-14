@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mario Wymann</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <link rel="stylesheet/less" type="text/css" href="styles/webstyles.less" />
+        <link rel="stylesheet/less" type="text/css" href="plugins/swiper.min.css" />
+
+        <script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="plugins/swiper.jquery.min.js"></script>
+        <script src="less/less.min.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/b4de5897ae.js"></script>
+
+        <script type="text/javascript" src="scripts/smoothScrolling.js?v=321435"></script>
+        <script type="text/javascript" src="scripts/timeline.js"></script>
+    </head>
+    <body>
+        <!-- Start Header -->
+        <header class="fixed">
+            <p class="name">Mario Wymann</p>
+            <nav class="navigation">
+                <a href="#about-me" class="navigation__elem anchor-link">Über mich</a>
+                <a href="#hobbies" class="navigation__elem anchor-link">Hobbies</a>
+                <a href="#cv" class="navigation__elem anchor-link">Lebenslauf</a>
+                <a href="#imprint" class="navigation__elem navigation__elem--imprint anchor-link">Impressum</a>
+            </nav>
+        </header>
+        <!-- End Header -->
+
+        <!-- Start Navigation Right -->
+        <aside class="sidenav fixed">
+            <a href="#about-me" class="sidenav__icon sidenav__icon--about-me anchor-link"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <div class="sidenav__line"></div>
+            <a href="#hobbies" class="sidenav__icon sidenav__icon--hobbies anchor-link"><i class="fa fa-television" aria-hidden="true"></i></a>
+            <div class="sidenav__line"></div>
+            <a href="#cv" class="sidenav__icon sidenav__icon--cv anchor-link"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
+            <div class="sidenav__line"></div>
+            <a href="#imprint" class="sidenav__icon sidenav__icon--about-imprint anchor-link"><i class="fa fa-info" aria-hidden="true"></i></a>
+        </aside>
+        <!-- End Navigation Right -->
+
+        <!-- Start Content -->
+        <article>
+            <!-- Start About Me -->
+            <section class="section" id="about-me">
+                <div class="container container--no-padding clearfix">
+                    <div class="container__img container__img--portrait col col--lg-4"></div>
+                    <div class="col col--lg-8 flex flex--column">
+                        <h1 class="flex__elem flex__elem--no-resize">Mario Wymann</h1>
+                        <div class="box-wrapper flex__elem">
+                            <div class="box-wrapper__inner">
+                                <div class="box box--trennlinie">
+                                    <h2 class="box__title">Über mich</h2>
+                                    <ul>
+                                        <li>Name: Mario Wymann</li>
+                                        <li>Geboren: 12.07.1998</li>
+                                        <li>Geburtsort: Tsu, Japan</li>
+                                        <li>Nationalität: Schweiz</li>
+                                        <li>Email: <a href="mailto: mariowymann@gmail.com">mariowymann@gmail.com</a></li>
+                                        <li>Telefon: <a href="tel:+41774220147">077 422 01 47</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box">
+                                    <h2 class="box__title">Warum?</h2>
+                                    <p>Ich absolviere im Moment das 3. Lehrjahr bei der <a href="https://www.inware.ch" target="_blank">Inware AG</a> und bin auf der Suche nach einer neuer Lehrstelle.</p>
+                                    <p>Bei der Inware AG lernte ich, selbständig Projekte umzusetzen und Kunden jederzeit zu unterstützen.</p>
+                                    <p>Mit der Lehre absolviere ich die Berufsmaturitätsschule, um für die Zukunft vorbereitet zu sein.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="section__link section__link--next anchor-link" href="#hobbies"></a>
+            </section>
+            <!-- End About Me -->
+
+            <!-- Start hobbies -->
+            <section class="section" id="hobbies">
+                <div class="container container--no-padding">
+                    <div class="swiper-container swiper-container--background">
+                        <div class="swiper-wrapper">
+                            <div class="container__img container__img--snowboard swiper-slide"></div>
+                            <div class="container__img container__img--gaming swiper-slide"></div>
+                            <div class="container__img container__img--gym swiper-slide"></div>
+                        </div>
+                    </div>
+                    <div class="box box--center box--shadow">
+                        <div class="box__navigation flex">
+                            <a class="flex__elem active anchor-link" href="#hobbies" data-slide="1">Snowboard</a>
+                            <a class="flex__elem anchor-link" href="#hobbies" data-slide="2">Gaming</a>
+                            <a class="flex__elem anchor-link" href="#hobbies" data-slide="3">Fitness</a>
+                        </div>
+                        <div class="swiper-container swiper-container--box">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <h2 class="box__title">Snowboard & Berge</h2>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="swiper-slide">
+                                    <h2 class="box__title">Gaming</h2>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="swiper-slide">
+                                    <h2 class="box__title">Fitness</h2>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="section__link section__link--prev anchor-link" href="#about-me"></a>
+                <a class="section__link section__link--next anchor-link" href="#cv"></a>
+            </section>
+            <!-- End hobbies -->
+
+            <!-- Start CV -->
+            <section class="section" id="cv">
+                <div class="container">
+                    <h1>Lebenslauf & Skills</h1>
+                    <div class="timeline clearfix">
+                        <div class="timeline__row timeline__row--top clearfix" data-row="1">
+                            <div class="timeline__item col col--lg-4" data-item="1">
+                                <div class="box box--shadow box--timeline">
+                                    <h3 class="timeline__title">Grundstufe</h3>
+                                    <p class="timeline__date">6 Jahre, 2005-2011</p>
+                                </div>
+                                <div class="timeline__line-wrapper flex flex--column">
+                                    <div class="flex__elem"></div>
+                                    <div class="flex__elem flex__elem--no-resize timeline__line"></div>
+                                </div>
+                            </div>
+                            <div class="timeline__item timeline__item--hidden col col--lg-4"></div>
+                            <div class="timeline__item col col--lg-4" data-item="3">
+                                <div class="box box--shadow box--timeline box--hover">
+                                    <a href="https://www.inware.ch" target="_blank" class="box__link"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                    <h3 class="timeline__title">Inware AG</h3>
+                                    <p class="timeline__date">3 Jahre, 2014-2017</p>
+                                </div>
+                                <div class="timeline__line-wrapper flex flex--column">
+                                    <div class="flex__elem"></div>
+                                    <div class="flex__elem flex__elem--no-resize timeline__line"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stripline clearfix">
+                            <div class="stripline__elem col col--lg-2" data-pos="1"><div class="stripline__inner"></div></div>
+                            <div class="stripline__elem col col--lg-4" data-pos="2"><div class="stripline__inner"></div></div>
+                            <div class="stripline__elem col col--lg-4" data-pos="3"><div class="stripline__inner"></div></div>
+                            <div class="stripline__elem col col--lg-2" data-pos="4"><div class="stripline__inner"></div></div>
+                        </div>
+                        <div class="timeline__row timeline__row--bottom clearfix" data-row="2">
+                            <div class="timeline__item timeline__item--hidden col col--lg-4"></div>
+                            <div class="timeline__item col col--lg-4" data-item="2">
+                                <div class="timeline__line-wrapper flex flex--column">
+                                    <div class="flex__elem flex__elem--no-resize timeline__line"></div>
+                                    <div class="flex__elem"></div>
+                                </div>
+                                <div class="box box--shadow box--timeline">
+                                    <h3 class="timeline__title">Gymnasium Rämibühl</h3>
+                                    <p class="timeline__date">3 Jahre, 2011-2014</p>
+                                </div>
+                            </div>
+                            <div class="timeline__item timeline__item--hidden col col--lg-4"></div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper clearfix">
+                        <div class="col col--lg-4">
+                            <div class="box">
+                                <h2 class="box__title">Fachkenntnisse</h2>
+                                <p>In der Lehre bei der <a href="https://www.inware.ch" target="_blank">Inware AG</a> lag der Fokus bei der selbständig Projektumsetzung.
+                                </br></br></p>
+                                <ul>
+                                    <li>Selbständigkeit</li>
+                                    <li>Kundenkontakt</li>
+                                    <li>Verantwortung tragen</li>
+                                    <li>Support</li>
+                                    <li>Erlangenes Wissen weitergeben</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col--lg-4">
+                            <div class="box">
+                                <h2 class="box__title">Sprachen</h2>
+                                <h4>Erweiterte Kenntnisse</h4>
+                                <ul>
+                                    <li>Html</li>
+                                    <li>Css3</li>
+                                    <li>Javascript</li>
+                                    <li>PHP 5.4/5.6</li>
+                                    <li>MySql</li>
+                                </ul>
+                                <h4>Grundkenntnisse</h4>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>C#</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col--lg-4">
+                            <div class="box">
+                                <h2 class="box__title">Weiteres</h2>
+                                <ul>
+                                    <li>Jquery</li>
+                                    <li>Less</li>
+                                    <li>BEM</li>
+                                    <li>GIT</li>
+                                    <li>Mobile First</li>
+                                    <li>Responsive Design</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="section__link section__link--prev anchor-link" href="#hobbies"></a>
+            </section>
+            <!-- End CV -->
+        </article>
+        <!-- End Content -->
+
+        <!-- Start Imprint -->
+        <footer class="footer" id="imprint">
+            <div class="inner-footer clearfix">
+                <p class="footer__text">&copy; Mario Wymann, 2017</p>
+                <a href="https://www.github.com" target="_blank" class="footer__text">Github Projekt</a>
+            </div>
+        </footer>
+        <!-- End Imprint -->
+        <script type="text/javascript" src="scripts/slider.js?v=423432"></script>
+    </body>
+</html>
