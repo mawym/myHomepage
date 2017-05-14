@@ -1,0 +1,120 @@
+/* Start Fonts */
+@font-awesome: normal normal normal 14px/1 FontAwesome;
+/* End Fonts */
+
+/* Start grid variables */
+@col-2-width: 100% / 6;
+@col-4-width: 100% / 3;
+@col-6-width: 50%;
+@col-8-width: @col-4-width * 2;
+/* End grid variables */
+
+/* Start colors
+(Color Scheme inspired from http://www.colorcombos.com/color-scheme-230.html)
+ */
+@red-light: #821122;
+@red-dark: #561420;
+@brown: #C59A6F;
+@grey-dark: #333333;
+@grey-light: #CCCCCC;
+@white: #ffffff;
+/* End colors */
+
+/* Layout Elements */
+@header-height: 50px;
+@arrow-down: "\f078";
+@arrow-up: "\f077";;
+@list-style: "\f10c";
+/* End Layout Elements */
+
+.get-standard-grids() {
+  &-2 {
+    width: @col-2-width;
+  }
+  &-4 {
+    width: @col-4-width;
+  }
+  &-6 {
+    width: @col-6-width;
+  }
+  &-8 {
+    width: @col-8-width;
+  }
+}
+.shadow() {
+  .border-radius(7px);
+  .box-shadow(0px 0px 10px 0px @grey-light);
+}
+
+/* Following Mixins are taken from https://css-tricks.com/snippets/css/useful-css3-less-mixins/ */
+
+.box-shadow (@string) {
+  -webkit-box-shadow: @string;
+  -moz-box-shadow:    @string;
+  box-shadow:         @string;
+}
+
+.box-sizing (@type: border-box) {
+  -webkit-box-sizing: @type;
+  -moz-box-sizing:    @type;
+  box-sizing:         @type;
+}
+
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius:    @radius;
+  border-radius:         @radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+
+.opacity (@opacity: 0.5) {
+  -webkit-opacity: 	@opacity;
+  -moz-opacity: 		@opacity;
+  opacity: 		@opacity;
+}
+
+.transition (@transition) {
+  -webkit-transition: @transition;
+  -moz-transition:    @transition;
+  -ms-transition:     @transition;
+  -o-transition:      @transition;
+}
+
+.transform(@string){
+  -webkit-transform: @string;
+  -moz-transform: 	 @string;
+  -ms-transform: 		 @string;
+  -o-transform: 		 @string;
+  transform: @string;
+}
+
+.translate (@x, @y:0) {
+  -webkit-transform:       translate(@x, @y);
+  -moz-transform: 	 translate(@x, @y);
+  -ms-transform: 		 translate(@x, @y);
+  -o-transform: 		 translate(@x, @y);
+}
+
+/* http://codepen.io/kenstone/pen/uLhtI */
+
+.flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display:flex;
+}
+
+.flex-direction(@direction) {
+  -ms-flex-direction:@direction;
+  -webkit-flex-direction:@direction;
+  flex-direction:@direction;
+}
+.flex-config(@columns: initial) {
+  -webkit-flex: @columns;
+  -ms-flex: @columns;
+  flex: @columns;
+}
