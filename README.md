@@ -1,3 +1,3 @@
 # myHomepage
 
-EIne Website um mich ein bisschen besser kennenzulernen
+EIne Website um mich ein bisschen kennenzulernen
