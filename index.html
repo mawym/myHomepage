@@ -5,27 +5,50 @@
         <title>Mario Wymann</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <link rel="stylesheet/less" type="text/css" href="styles/webstyles.less" />
+        <link rel="stylesheet/less" type="text/css" href="styles/imports.less" />
         <link rel="stylesheet/less" type="text/css" href="plugins/swiper.min.css" />
+        <!--<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">-->
+
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
         <script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="plugins/swiper.jquery.min.js"></script>
-        <script src="less/less.min.js" type="text/javascript"></script>
-        <script src="https://use.fontawesome.com/b4de5897ae.js"></script>
+        <script type="text/javascript" src="less/less.min.js" ></script>
+        <script type="text/javascript" src="plugins/swiper.min.js"></script>
+        <!--<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>-->
 
-        <script type="text/javascript" src="scripts/smoothScrolling.js?v=321435"></script>
+        <script type="text/javascript" src="scripts/slider.js"></script>
+        <script type="text/javascript" src="scripts/smoothScrolling.js"></script>
         <script type="text/javascript" src="scripts/timeline.js"></script>
+        <script type="text/javascript" src="scripts/mobile.js"></script>
     </head>
     <body>
+        <!-- Background Pattern -->
+        <div class="background-pattern gradient-pattern"></div>
+        <!-- End Background Pattern -->
+
+        <!-- Start Mobile Navigation -->
+        <nav class="navigation navigation--mobile">
+            <a href="#about-me" class="navigation__elem anchor-link">Über mich</a>
+            <a href="#hobbies" class="navigation__elem anchor-link">Hobbies</a>
+            <a href="#cv" class="navigation__elem anchor-link">Lebenslauf</a>
+            <a href="#imprint" class="navigation__elem navigation__elem--imprint anchor-link">Impressum</a>
+        </nav>
+        <!-- End Mobile Navigation -->
+
         <!-- Start Header -->
-        <header class="fixed">
+        <header class="header fixed">
             <p class="name">Mario Wymann</p>
-            <nav class="navigation">
+            <nav class="navigation navigation--desktop">
                 <a href="#about-me" class="navigation__elem anchor-link">Über mich</a>
                 <a href="#hobbies" class="navigation__elem anchor-link">Hobbies</a>
                 <a href="#cv" class="navigation__elem anchor-link">Lebenslauf</a>
                 <a href="#imprint" class="navigation__elem navigation__elem--imprint anchor-link">Impressum</a>
             </nav>
+            <div class="burger">
+                <div class="burger__stripe burger__stripe--top"></div>
+                <div class="burger__stripe burger__stripe--middle"></div>
+                <div class="burger__stripe burger__stripe--bottom"></div>
+            </div>
         </header>
         <!-- End Header -->
 
@@ -43,11 +66,21 @@
 
         <!-- Start Content -->
         <article>
+
             <!-- Start About Me -->
-            <section class="section" id="about-me">
-                <div class="container container--no-padding clearfix">
-                    <div class="container__img container__img--portrait col col--lg-4"></div>
-                    <div class="col col--lg-8 flex flex--column">
+            <section class="section section--about-me section--hidden" id="about-me">
+
+                <!-- Start Portrait -->
+                <div class="portrait" id="portrait">
+                    <div class="container container--no-padding container--portrait">
+                        <div class="container__img container__img--portrait"></div>
+                    </div>
+                    <a class="section__link section__link--portrait anchor-link" href="#mario"></a>
+                </div>
+                <!-- End Portrait -->
+                <div class="container container--no-padding clearfix" id="mario">
+                    <div class="col col--lg-5 col--sm-0"></div>
+                    <div class="col col--lg-7 flex flex--column col--sm-12">
                         <h1 class="flex__elem flex__elem--no-resize">Mario Wymann</h1>
                         <div class="box-wrapper flex__elem">
                             <div class="box-wrapper__inner">
@@ -59,14 +92,14 @@
                                         <li>Geburtsort: Tsu, Japan</li>
                                         <li>Nationalität: Schweiz</li>
                                         <li>Email: <a href="mailto: mariowymann@gmail.com">mariowymann@gmail.com</a></li>
-                                        <li>Telefon: <a href="tel:+41774220147">077 422 01 47</a></li>
                                     </ul>
                                 </div>
                                 <div class="box">
-                                    <h2 class="box__title">Warum?</h2>
-                                    <p>Ich absolviere im Moment das 3. Lehrjahr bei der <a href="https://www.inware.ch" target="_blank">Inware AG</a> und bin auf der Suche nach einer neuer Lehrstelle.</p>
-                                    <p>Bei der Inware AG lernte ich, selbständig Projekte umzusetzen und Kunden jederzeit zu unterstützen.</p>
+                                    <h2 class="box__title">Meine Ausbildung zum Applikationsentwickler</h2>
+                                    <p>Ich absolviere im Moment das 3. Lehrjahr bei der <a href="https://www.inware.ch" target="_blank">Inware AG</a>.</p>
+                                    <p>Die Inware AG ist eine Webagentur die hauptsächlich Websites für kleinere und mittlere Kunden umsetzt.</p>
                                     <p>Mit der Lehre absolviere ich die Berufsmaturitätsschule, um für die Zukunft vorbereitet zu sein.</p>
+                                    <p>Für das letzte Jahr meiner Ausbildung bin ich auf der Suche nach einer neuen Lehrstelle.</p>
                                 </div>
                             </div>
                         </div>
@@ -86,9 +119,9 @@
                             <div class="container__img container__img--gym swiper-slide"></div>
                         </div>
                     </div>
-                    <div class="box box--center box--shadow">
+                    <div class="box box--center">
                         <div class="box__navigation flex">
-                            <a class="flex__elem active anchor-link" href="#hobbies" data-slide="1">Snowboard</a>
+                            <a class="flex__elem active anchor-link" href="#hobbies" data-slide="1">Berge</a>
                             <a class="flex__elem anchor-link" href="#hobbies" data-slide="2">Gaming</a>
                             <a class="flex__elem anchor-link" href="#hobbies" data-slide="3">Fitness</a>
                         </div>
@@ -96,15 +129,16 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <h2 class="box__title">Snowboard & Berge</h2>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <p>Mit unzähligen Wochenendausflügen in die Berge und den traditionellen Sportferien in die Melchsee Frutt konnte ich schon als Kind eine Verbindung mit den Bergen herstellen.<br>
+                                        Egal ob zum Wandern oder für den Wintersport - in den Bergen fühle ich mich immer zu Hause.</p>
                                 </div>
                                 <div class="swiper-slide">
                                     <h2 class="box__title">Gaming</h2>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <p>Die Leidenschaft für das Gamen habe ich von meinem älteren Bruder geerbt.<br> Egal, ob ich meinen Bruder in einem Klassiker wie Age of Mythology herausfordere oder in einem Online-Game wie CS:GO eine Runde starte, das Ziel bleibt das gleiche: Gewinnen.</p>
                                 </div>
                                 <div class="swiper-slide">
                                     <h2 class="box__title">Fitness</h2>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <p>Fitness war wärend der Lehre die perfekte Beschäftigung, um nach der Arbeit den Kopf zu lüften.<br> Auch wenn die gesteckten Ziele meisten nicht erreicht werden, ist Fitness für mich der optimale Ausgleich, den ich nicht so schnell aufgeben werde.</p>
                                 </div>
                             </div>
                         </div>
@@ -119,11 +153,14 @@
             <section class="section" id="cv">
                 <div class="container">
                     <h1>Lebenslauf & Skills</h1>
-                    <div class="timeline clearfix">
+
+                    <!-- Start Timeline for Desktop -->
+                    <div class="timeline timeline--desktop clearfix">
                         <div class="timeline__row timeline__row--top clearfix" data-row="1">
                             <div class="timeline__item col col--lg-4" data-item="1">
                                 <div class="box box--shadow box--timeline">
-                                    <h3 class="timeline__title">Grundstufe</h3>
+                                    <h3 class="timeline__title">Primarschule</h3>
+                                    <p>Uetikon am See</p>
                                     <p class="timeline__date">6 Jahre, 2005-2011</p>
                                 </div>
                                 <div class="timeline__line-wrapper flex flex--column">
@@ -133,9 +170,10 @@
                             </div>
                             <div class="timeline__item timeline__item--hidden col col--lg-4"></div>
                             <div class="timeline__item col col--lg-4" data-item="3">
-                                <div class="box box--shadow box--timeline box--hover">
-                                    <a href="https://www.inware.ch" target="_blank" class="box__link"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                <div class="box box--shadow box--timeline">
+                                    <!--<a href="https://www.inware.ch" target="_blank" class="box__link"><i class="fa fa-external-link" aria-hidden="true"></i></a>-->
                                     <h3 class="timeline__title">Inware AG</h3>
+                                    <p>Zürich</p>
                                     <p class="timeline__date">3 Jahre, 2014-2017</p>
                                 </div>
                                 <div class="timeline__line-wrapper flex flex--column">
@@ -159,29 +197,69 @@
                                 </div>
                                 <div class="box box--shadow box--timeline">
                                     <h3 class="timeline__title">Gymnasium Rämibühl</h3>
+                                    <p>Zürich</p>
                                     <p class="timeline__date">3 Jahre, 2011-2014</p>
                                 </div>
                             </div>
                             <div class="timeline__item timeline__item--hidden col col--lg-4"></div>
                         </div>
                     </div>
+                    <!-- End Timeline for Desktop -->
+
+                    <!-- Start Timeline for Mobile -->
+                    <div class="timeline timeline--mobile clearfix">
+                        <div class="timeline__row timeline__row--top clearfix" data-row="1">
+                            <div class="timeline__item col col--lg-4" data-item="1">
+                                <div class="box box--shadow box--timeline">
+                                    <h3 class="timeline__title">Primarschule</h3>
+                                    <p>Uetikon am See</p>
+                                    <p class="timeline__date">6 Jahre, 2005-2011</p>
+                                </div>
+                            </div>
+                            <div class="timeline__item col col--lg-4" data-item="2">
+                                <div class="timeline__line-wrapper flex flex--column">
+                                    <div class="flex__elem flex__elem--no-resize timeline__line"></div>
+                                    <div class="flex__elem"></div>
+                                </div>
+                                <div class="box box--shadow box--timeline">
+                                    <h3 class="timeline__title">Gymnasium Rämibühl</h3>
+                                    <p>Zürich</p>
+                                    <p class="timeline__date">3 Jahre, 2011-2014</p>
+                                </div>
+                            </div>
+                            <div class="timeline__item col col--lg-4" data-item="3">
+                                <div class="timeline__line-wrapper flex flex--column">
+                                    <div class="flex__elem flex__elem--no-resize timeline__line"></div>
+                                    <div class="flex__elem"></div>
+                                </div>
+                                <div class="box box--shadow box--timeline">
+                                    <!--<a href="https://www.inware.ch" target="_blank" class="box__link"><i class="fa fa-external-link" aria-hidden="true"></i></a>-->
+                                    <h3 class="timeline__title">Inware AG</h3>
+                                    <p>Zürich</p>
+                                    <p class="timeline__date">3 Jahre, 2014-2017</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Timeline for Mobile -->
+
                     <div class="col-wrapper clearfix">
-                        <div class="col col--lg-4">
-                            <div class="box">
+                        <div class="col col--lg-4 col--sm-12 text-align">
+                            <div class="box box--small">
                                 <h2 class="box__title">Fachkenntnisse</h2>
-                                <p>In der Lehre bei der <a href="https://www.inware.ch" target="_blank">Inware AG</a> lag der Fokus bei der selbständig Projektumsetzung.
-                                </br></br></p>
+                                <p>In der Lehre bei der <a href="https://www.inware.ch" target="_blank">Inware AG</a> konnte ich mich mithilfe von selbständig durchgeführten Projekten und regelmässigem Kundenkontakt in folgenden Punkten stärken:
+                                <br/><br/></p>
                                 <ul>
+                                    <li>Verantwortung tragen</li>
+                                    <li>Erlangtes Wissen weitergeben</li>
                                     <li>Selbständigkeit</li>
                                     <li>Kundenkontakt</li>
-                                    <li>Verantwortung tragen</li>
                                     <li>Support</li>
-                                    <li>Erlangenes Wissen weitergeben</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col col--lg-4">
-                            <div class="box">
+                        <div class="col col--lg-4 col--sm-12 text-align">
+                            <div class="box box--small">
                                 <h2 class="box__title">Sprachen</h2>
                                 <h4>Erweiterte Kenntnisse</h4>
                                 <ul>
@@ -190,7 +268,7 @@
                                     <li>Javascript</li>
                                     <li>PHP 5.4/5.6</li>
                                     <li>MySql</li>
-                                </ul>
+                                </ul><br>
                                 <h4>Grundkenntnisse</h4>
                                 <ul>
                                     <li>Java</li>
@@ -198,16 +276,16 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col col--lg-4">
-                            <div class="box">
+                        <div class="col col--lg-4 col--sm-12 text-align">
+                            <div class="box box--small">
                                 <h2 class="box__title">Weiteres</h2>
                                 <ul>
                                     <li>Jquery</li>
                                     <li>Less</li>
                                     <li>BEM</li>
-                                    <li>GIT</li>
                                     <li>Mobile First</li>
                                     <li>Responsive Design</li>
+                                    <li>MVC</li>
                                 </ul>
                             </div>
                         </div>
@@ -223,10 +301,12 @@
         <footer class="footer" id="imprint">
             <div class="inner-footer clearfix">
                 <p class="footer__text">&copy; Mario Wymann, 2017</p>
-                <a href="https://www.github.com" target="_blank" class="footer__text">Github Projekt</a>
+                <a href="https://www.github.com" target="_blank" class="footer__text">Github Project</a>
+                <p class="footer__text">--</p>
+                <p class="footer__text">Portrait shot and edited by Fabian Wymann</p>
+                <p class="footer__text">Snow mountains shot by <a href="http://www.waltergraber.ch" target="_blank">Walter Graber</a></p>
             </div>
         </footer>
         <!-- End Imprint -->
-        <script type="text/javascript" src="scripts/slider.js?v=423432"></script>
     </body>
 </html>

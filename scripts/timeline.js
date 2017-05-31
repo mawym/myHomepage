@@ -2,13 +2,16 @@
  * Created by mario on 14.05.2017.
  */
 $(document).ready(function() {
-    var duration = 400;
+    var isMobile = $(".timeline--desktop").css("display") != "block";
+    var duration = !isMobile ? 400 : 200;
     var sectionDuration = 3 * duration;
     var item = {};
     var items = [];
+    var timeline = !isMobile ? $(".timeline--desktop") : $(".timeline--mobile");
+    var animationStarted = false;
 
     //save every timeline item wich isn't empty in items array
-    $(".timeline__item").each(function(e, i) {
+    timeline.find(".timeline__item").each(function(e, i) {
         var itemPosition = $(this).data("item");
 
         if(itemPosition) {
@@ -22,14 +25,19 @@ $(document).ready(function() {
     });
 
     //Check if User sees Timeline when user scrolls or reloads page
-    isTimelineVisible();
+    //isTimelineVisible();
     $(document).on("scroll", function() {
-        isTimelineVisible();
+        if(!isMobile) {
+            isTimelineVisible();
+        }
     });
 
     function isTimelineVisible() {
-        if(isElementInViewport($(".timeline"))) {
-            startTimeline();
+        if (!animationStarted) {
+            if (isElementInViewport($("#cv"))) {
+                animationStarted = true;
+                startTimeline();
+            }
         }
     }
 
@@ -49,7 +57,9 @@ $(document).ready(function() {
     function animateTimelineSection(item) {
 
         //Animate Base Line
-        animateStripe(item);
+        if(!isMobile) {
+            animateStripe(item);
+        }
 
         //Animate Item Line after Base Line
         setTimeout(function(){
@@ -70,19 +80,19 @@ $(document).ready(function() {
     }
 
     function animateStripe(item) {
-        $(".stripline__elem[data-pos='" + item.position +"'] .stripline__inner").animate({
+        timeline.find(".stripline__elem[data-pos='" + item.position +"'] .stripline__inner").animate({
             width: "100%"
         }, duration);
     }
 
     function animateItemLine(item) {
-        $(".timeline__item[data-item='" + item.position + "'] .timeline__line").animate({
+        timeline.find(".timeline__item[data-item='" + item.position + "'] .timeline__line").animate({
             height: "100%"
         }, duration);
     }
 
     function animateItem(item) {
-        $(".timeline__item[data-item='" + item.position + "'] .box").animate({
+        timeline.find(".timeline__item[data-item='" + item.position + "'] .box").animate({
             opacity: 1
         }, duration);
     }
@@ -98,10 +108,7 @@ $(document).ready(function() {
         var rect = el.getBoundingClientRect();
 
         return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            (rect.bottom - (window.innerHeight / 5 * 2)) <= (window.innerHeight || document.documentElement.clientHeight)
         );
     }
 

@@ -1,19 +1,19 @@
-/* Start Fonts */
-@font-awesome: normal normal normal 14px/1 FontAwesome;
-/* End Fonts */
 
 /* Start grid variables */
 @col-2-width: 100% / 6;
 @col-4-width: 100% / 3;
+@col-5-width: 100% / 12 * 5;
 @col-6-width: 50%;
+@col-7-width: 100% / 12 * 7;
 @col-8-width: @col-4-width * 2;
+@col-12-width: 100%;
 /* End grid variables */
 
 /* Start colors
 (Color Scheme inspired from http://www.colorcombos.com/color-scheme-230.html)
  */
-@red-light: #821122;
-@red-dark: #561420;
+@red-light: #38822b;
+@red-dark: #125617;
 @brown: #C59A6F;
 @grey-dark: #333333;
 @grey-light: #CCCCCC;
@@ -23,27 +23,41 @@
 /* Layout Elements */
 @header-height: 50px;
 @arrow-down: "\f078";
-@arrow-up: "\f077";;
+@arrow-up: "\f077";
+@arrow-right: "\f054";
+@arrow-left: "\f053";
 @list-style: "\f10c";
 /* End Layout Elements */
 
 .get-standard-grids() {
+  &-0 {
+    width: 0;
+    height: 0;
+  }
   &-2 {
     width: @col-2-width;
   }
   &-4 {
     width: @col-4-width;
   }
+  &-5 {
+    width: @col-5-width;
+  }
   &-6 {
     width: @col-6-width;
+  }
+  &-7 {
+    width: @col-7-width;
   }
   &-8 {
     width: @col-8-width;
   }
+  &-12 {
+    width: @col-12-width;
+  }
 }
-.shadow() {
-  .border-radius(7px);
-  .box-shadow(0px 0px 10px 0px @grey-light);
+.shadow(@color) {
+  .box-shadow(0px 0px 10px 0px @color);
 }
 
 /* Following Mixins are taken from https://css-tricks.com/snippets/css/useful-css3-less-mixins/ */
@@ -81,6 +95,7 @@
   -moz-transition:    @transition;
   -ms-transition:     @transition;
   -o-transition:      @transition;
+  transition: @transition;
 }
 
 .transform(@string){

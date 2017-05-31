@@ -3,10 +3,13 @@
 .col {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  //@media only screen and (min-width : 1080px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  //}
   float: left;
   height: 100%;
+  display: block;
   &--sm {
     .get-standard-grids();
   }

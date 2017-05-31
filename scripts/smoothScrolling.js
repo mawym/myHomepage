@@ -3,10 +3,35 @@
  */
 $(document).ready(function() {
     var body = $('html, body');
+    var hash = window.location.hash.replace("#", "");
     var offsetTop;
     var section;
     var sections = [];
     var closestSection;
+    var sectionOnLoad;
+    var stop = false;
+    var interval;
+    var timeout;
+
+    //SetTimeout so offset top isn't 0
+    //TODO: Solve without Timeout
+    setTimeout(function(){
+        //Go through each section and save offsetTop and ID
+        $(".section").each(function() {
+            section = {};
+            offsetTop = $(this).offset().top;
+
+            section.id = $(this).attr("id");
+            section.offsetTop = offsetTop;
+
+            sections.push(section);
+        });
+
+        onLoad();
+
+        //Prevent flimering of portrait on page load
+        $(".section--about-me").removeClass("section--hidden");
+    }, 400);
 
     //Smooth scrolling on anchor links
     $(document).on('click', '.anchor-link', function(event){
@@ -19,52 +44,92 @@ $(document).ready(function() {
         }, 350);
     });
 
-    //Go through each section and save offsetTop and ID
-    $(".section").each(function() {
-        section = {};
-        offsetTop = $(this).offset().top;
-
-        section.id = $(this).attr("id");
-        section.offsetTop = offsetTop;
-
-        sections.push(section);
+    $(".portrait").on("click", function() {
+        if($(this).css("position") != "relative") {
+            togglePortrait();
+        }
     });
 
     //Change Location Hash on scroll if needed
-
     $(document).on("scroll", function() {
-        onScroll();
+
+        //Debounce Scroll
+        clearTimeout(timeout);
+        timeout = setTimeout(onScroll, 30);
     });
 
-    onScroll();
+    function togglePortrait() {
+        $("#portrait").toggleClass("portrait--minimized");
+        $("header").toggleClass("header--active");
 
-    function onScroll() {
+        $("body").toggleClass("scroll-blocked");
+        $("html").toggleClass("scroll-blocked");
+    }
+
+    function onLoad() {
+
+        //Disable Scroll if User loads Page on about-me
+        if((hash == "" || hash == sections[0].id)) {
+            $(window).scrollTop(0);
+            $("body").toggleClass("scroll-blocked");
+            $("html").toggleClass("scroll-blocked");
+        }
+
+        //keep Position if user is in different section
+        if(!(hash == "" || hash == sections[0].id)) {
+            sections.forEach(function(e) {
+                if(e.id == hash) {
+                    sectionOnLoad = e;
+                    return false;
+                }
+            });
+            $("#portrait").toggleClass("portrait--minimized");
+            $("header").toggleClass("header--active");
+            if(sectionOnLoad) {
+                $(window).scrollTop(sectionOnLoad.offsetTop - 50);
+            }
+        }
+
+        //Start onScroll() to highlight current Section in navigation
+        onScroll(true);
+    }
+
+    function onScroll(onload) {
+        if(!isTopPage()) {
+            $("header").addClass("header--active");
+        }
+
+        if(!onload) {
+            var isBottom = isBottomPage();
+        }
         //Get Closest Section
         closestSection = getClosestSection($(window).scrollTop());
 
+        var newhash = !isBottom ? "#" + closestSection.id : "#imprint";
+
         //Write Closest section in URL
         //Use History to prevent flimmering bug when using window.location.hash
-        if(history.pushState) {
-            history.pushState(null, null, "#" + closestSection.id);
+        if (history.pushState) {
+            history.pushState(null, null, newhash);
         }
         else {
-            location.hash = "#" + closestSection.id;
+            location.hash = newhash;
         }
 
         //Reset activ Elements
         $(".sidenav__icon").removeClass("sidenav__icon--active");
         $(".navigation__elem").removeClass("navigation__elem--active");
 
-        //if(!isBottomPage()) {
+        if(!isBottom) {
             //Highlight Closest Section in Header and Side Navigation
-            $(".sidenav__icon[href='#" + closestSection.id + "']").addClass("sidenav__icon--active");
+            $(".sidenav__icon[href='" + newhash + "']").addClass("sidenav__icon--active");
 
-            $(".navigation__elem[href='#" + closestSection.id + "']").addClass("navigation__elem--active");
-       /* } else {
-            //Highlight Imprint
-            $(".navigation__elem--imprint").addClass("navigation__elem--active");
-            $(".sidenav__icon--about-imprint").addClass("sidenav__icon--active");
-        }*/
+            $(".navigation__elem[href='" + newhash + "']").addClass("navigation__elem--active");
+         } else {
+             //Highlight Imprint
+             $(".navigation__elem--imprint").addClass("navigation__elem--active");
+             $(".sidenav__icon--about-imprint").addClass("sidenav__icon--active");
+         }
     }
 
     //Returns closest section with current Location
@@ -89,18 +154,8 @@ $(document).ready(function() {
         return($(window).scrollTop() + $(window).height() == $(document).height());
     }
 
-    /*function debounce(func, wait, immediate) {
-        var timeout;
-        return function() {
-            var context = this, args = arguments;
-            var later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            var callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    };*/
+    function isTopPage() {
+        return($(window).scrollTop() < 50);
+    }
+
 });
