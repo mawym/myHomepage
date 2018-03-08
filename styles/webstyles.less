@@ -423,7 +423,7 @@ html, body {
   &--timeline {
     padding: 25px;
     text-align: center;
-    margin: 0 20%;
+    margin: 0 10%;
     opacity: 0;
     @media only screen and (max-width : 1400px) {
       margin: 0 5px;
@@ -557,6 +557,10 @@ html, body {
   width: 50px;
   z-index: 100;
   .translate(0, -50%);
+  opacity: 1;
+  &--hidden {
+    opacity: 0;
+  }
   @media only screen and (max-width : 1080px) {
     display: none;
   }
