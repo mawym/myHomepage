@@ -1,6 +1,8 @@
 
 /* Start grid variables */
+@col-1-5-width: 100% / 12 * 1.5;
 @col-2-width: 100% / 6;
+@col-3-width: 100% / 4;
 @col-4-width: 100% / 3;
 @col-5-width: 100% / 12 * 5;
 @col-6-width: 50%;
@@ -34,8 +36,14 @@
     width: 0;
     height: 0;
   }
+  &-1-5 {
+    width: @col-1-5-width;
+  }
   &-2 {
     width: @col-2-width;
+  }
+  &-3 {
+    width: @col-3-width;
   }
   &-4 {
     width: @col-4-width;
