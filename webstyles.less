@@ -1,0 +1,624 @@
+
+* {
+  .box-sizing();
+  margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, li {
+  font-family: "Roboto", Arial, "sans-serif";
+  font-weight: 400;
+  line-height: 140%;
+  font-size: 16px;
+  color: @grey-dark;
+}
+
+a {
+  text-decoration: none;
+  color: @red-light;
+  .transition(color 0.2s);
+  &:hover {
+    color: @grey-dark;
+  }
+}
+
+i:before {
+  font-family: @font-awesome;
+}
+
+ul {
+  padding: 0;
+  li {
+    list-style-type: none;
+    padding-left: 25px;
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 3px;
+      left: 0;
+      font: @font-awesome;
+      content: @list-style;
+    }
+  }
+}
+
+h1 {
+  font-size: 70px;
+  text-align: center;
+  margin-top: 20px;
+  color: @red-light;
+  @media only screen and (max-width : 1080px) {
+    font-size: 40px;
+    margin-top: 40px;
+  }
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+}
+h1, h2, h3, h4 {
+  font-weight: 500;
+}
+
+html, body {
+  height: 100%;
+  @media only screen and (min-width : 1080px) {
+    &.scroll-blocked {
+      overflow: hidden;
+    }
+  }
+}
+
+.clearfix:after {
+  content: ".";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.text-align {
+  text-align: center;
+}
+
+.flex {
+  .flex();
+  &--column {
+    .flex-direction(column);
+  }
+  &__elem {
+    .flex-config(1 1 auto);
+    &--no-resize {
+      .flex-config(0 0 auto);
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  z-index: 10000000;
+  background: @grey-dark;
+  top: -@header-height;
+  height: @header-height;
+  display: block;
+  .transition(top 0.5s);
+  overflow: hidden;
+  &--active {
+    top: 0;
+  }
+  .name {
+    position: absolute;
+    left: 30px;
+    font-style: italic;
+    color: @grey-light;
+    line-height: @header-height;
+  }
+}
+
+.burger {
+  display: none;
+  @media only screen and (max-width : 1080px) {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: calc(100% ~"-" 28px); //100% - margin
+    margin: 14px 14px;
+    width: 35px;
+    &:hover {
+      cursor: pointer;
+    }
+    &__stripe {
+      height: 20%;
+      background: @white;
+      position: relative;
+      top: 0;
+      .transition(transform .2s ~"," top .15s .2s);
+      &--hidden {
+        background: transparent;
+      }
+      &--middle {
+        top: 20%;
+      }
+      &--bottom {
+        top: 40%;
+      }
+    }
+    &--close {
+      .burger__stripe {
+        .transition(transform .15s .2s ~"," top .2s);
+        &--middle {
+          background: transparent;
+        }
+        &--top {
+          .transform(rotate(45deg));
+          top: 37%;
+          background: @white;
+        }
+        &--bottom {
+          top: 0;
+          .transform(rotate(-45deg));
+          background: @white;
+        }
+      }
+    }
+  }
+}
+
+.navigation {
+  display: none;
+  //Desktop Header
+  @media only screen and (min-width : 1080px) {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    &--mobile {
+      display: none;
+    }
+    &__elem {
+      line-height: @header-height;
+      padding: 0 15px;
+      display: inline-block;
+      color: @brown;
+      .transition(background 0.2s);
+      &:hover, &--active {
+        background: @red-light;
+        color: @grey-light;
+      }
+    }
+  }
+  //Mobile Header
+  @media only screen and (max-width : 1080px) {
+    display: block;
+    position: fixed;
+    width: 100%;
+    background: @grey-light;
+    z-index: -10;
+    padding-top: 100px;
+    opacity: 0;
+    height: 100vh;
+    overflow: hidden;
+    .transition(opacity 0.4s ~"," z-index 0.4s 0s);
+    &--desktop {
+      display: none;
+    }
+    &--visible {
+      z-index: 10000000;
+      opacity: 1;
+    }
+    &__elem {
+      display: block;
+      text-align: center;
+      padding: 15px 0;
+    }
+  }
+}
+
+.portrait {
+  //background: @white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  z-index: 10000;
+  display: flex;
+  top: 0;
+  .transition(width 0.5s);
+  @media screen and (max-width : 1080px) {
+    position: relative;
+    width: 100% !important;
+    height: 100vh;
+  }
+  &--minimized {
+    width: @col-5-width;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.section {
+  min-height: calc(100vh ~"-" @header-height);
+  margin-top: @header-height;
+  display: flex;
+  position: relative;
+  background: @white;
+  .shadow(@grey-light);
+  opacity: 1;
+  @media screen and (max-width : 1080px) {
+    min-height: 0;
+  }
+  &--about-me {
+    padding-top: @header-height;
+    margin-top: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    @media screen and (max-width : 1080px) {
+      min-height: 0;
+      padding-top: 0;
+      display: block; // Prevent Portrait to be aside of container
+      background: transparent;
+      > .container {
+        background: @white;
+      }
+    }
+  }
+  &--hidden {
+    opacity: 0;
+  }
+  &__link {
+    &--hidden {
+      display: none;
+    }
+    &:after {
+      font: @font-awesome;
+      position: absolute;
+      left: 50%;
+      .translate(-50%, 0);
+      width: 35px;
+      height: 35px;
+      font-size: 27px;
+      text-align: center;
+      line-height: 35px;
+      z-index: 10;
+    }
+    &--next:after {
+      content: @arrow-down;
+      bottom: 10px;
+    }
+    &--prev:after {
+      content: @arrow-up;
+      top: 10px;
+    }
+    &--portrait {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: transparent;
+      &:hover {
+        color: @red-light;
+      }
+      &:after {
+        content: @arrow-right;
+        right: 10px;
+        left: auto;
+        top: 50%;
+        .translate(0, -50%);
+        @media only screen and (max-width: 1080px) {
+          right: auto;
+          top: auto;
+          left: 50%;
+          bottom: 40px;
+          .translate(-50%, 0);
+          content: @arrow-down;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  @media only screen and (min-width : 1080px) {
+    padding: 50px 40px;
+  }
+  &--no-padding {
+    padding: 0;
+  }
+  &--portrait {
+    height: 100%;
+  }
+  &__img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    &--portrait {
+      background-image: url("/images/portrait_berge_mobile.jpg");
+      //background-image: url("/images/portrait_landschaft_desktop.jpg");
+      background-position: left top;
+      background-size: cover;
+      @media only screen and (max-width: 1080px) {
+        //background-image: url("/images/portrait_berge_mobile.jpg");
+        width: calc(100% ~"+" 40px);
+        background-position: -40px top; // Reduce Space left so face is always visible
+      }
+    }
+    &--snowboard {
+      background-image: url("/images/mountain.jpg");
+    }
+    &--gym {
+      background-image: url("/images/gym_final.jpg");
+    }
+    &--gaming {
+      background-image: url("/images/gaming_final.jpg");
+    }
+  }
+}
+.box-wrapper {
+  display: flex;
+  flex-flow: column;
+  &__inner {
+    margin: auto;
+    width: 60%;
+    min-width: 450px;
+    @media only screen and (max-width : 1080px) {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+}
+.box {
+  position: relative;
+  padding: 50px;
+  background: @white;
+  @media only screen and (min-width : 1080px) {
+    margin: 15px auto ;
+  }
+  @media only screen and (max-width : 1080px) {
+    padding: 50px 20px;
+  }
+  &--shadow {
+    border: 1px solid @grey-light;
+    background: @white;
+    //.shadow(@grey-light);
+  }
+  &--small {
+    padding: 20px 50px;
+    text-align: left;
+    @media only screen and (min-width : 1080px) {
+      display: inline-block;
+    }
+    @media only screen and (max-width : 1080px) {
+      padding: 20px;
+    }
+
+  }
+  &--trennlinie {
+    border-bottom: 1px solid @grey-dark;
+  }
+  &--center {
+    @media only screen and (min-width : 1080px) {
+      padding-top: 86px;
+      width: 45%;
+      min-width: 500px;
+      position: absolute;
+      z-index: 10;
+      //.translate(-50%, -50%); //Text blurry in Chrome
+      top: 0; right: 0; bottom: 0; left: 0;
+      margin: auto;
+      height: 300px;
+    }
+    @media only screen and (max-width : 1080px) {
+      padding-bottom: 70px;
+    }
+  }
+  &--timeline {
+    padding: 25px;
+    text-align: center;
+    margin: 0 10%;
+    opacity: 0;
+    @media only screen and (max-width : 1400px) {
+      margin: 0 5px;
+    }
+    @media only screen and (max-width : 1080px) {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      opacity: 1;
+    }
+  }
+  &--hover:hover {
+    .box-shadow(0px 0px 10px 0px @red-light);
+    border-color: @red-light;
+  }
+  &__title {
+    margin-bottom: 10px;
+  }
+  &__navigation {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid @grey-dark;
+    //.border-radius(7px);
+    a {
+      line-height: 50px;
+      text-align: center;
+      border-left: 1px solid @grey-dark;
+      &:first-child {
+        border: none;
+      }
+      &.active, &:hover {
+        background: @grey-light;
+        color: @red-light;
+      }
+    }
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &:hover {
+      color: @red-light;
+    }
+    .fa {
+      right: 10px;
+      position: absolute;
+      top: 50%;
+      .translate(0, -50%);
+      font-size: 20px;
+    }
+  }
+}
+
+.timeline {
+  margin: 20px 50px;
+  display: none;
+  &--desktop {
+    @media only screen and (min-width : 1080px) {
+      display: block;
+    }
+  }
+  &--mobile {
+    @media only screen and (max-width : 1080px) {
+      display: block;
+    }
+  }
+  @media only screen and (max-width : 1080px) {
+    margin: 50px 20px;
+  }
+  &__item {
+    padding: 0;
+    &--hidden {
+      box-shadow: none;
+      border: none;
+    }
+  }
+  &__line-wrapper {
+    height: 60px;
+  }
+  &__line {
+    width: 1px;
+    background: @grey-dark;
+    margin: 0 auto;
+    height: 0;
+    @media only screen and (max-width : 1080px) {
+      height: 100%;
+    }
+  }
+}
+
+.stripline {
+  min-height: 1px;
+  @media only screen and (max-width : 1080px) {
+    display: none;
+  }
+  &__elem {
+    padding: 0;
+  }
+  &__inner {
+    height: 3px;
+    background: @grey-dark;
+    width: 0;
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  &--background {
+    min-height: 600px;
+    @media only screen and (max-width : 1080px) {
+      min-height: 200px;
+      height: 200px;
+    }
+  }
+  &--box {
+    @media only screen and (max-width : 1080px) {
+      margin-top: 40px;
+    }
+  }
+}
+
+.sidenav {
+  right: 0;
+  top: 50%;
+  width: 50px;
+  z-index: 100;
+  .translate(0, -50%);
+  opacity: 1;
+  &--hidden {
+    opacity: 0;
+  }
+  @media only screen and (max-width : 1080px) {
+    display: none;
+  }
+  &__icon {
+    background: @grey-dark;
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    .border-radius(50%);
+    .transition(background 0.4s);
+    &:hover, &--active {
+      background: @red-light;
+    }
+    i {
+      color: @brown;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      .translate(-50%, -50%);
+    }
+  }
+  &__line {
+    height: 20px;
+    width: 1px;
+    margin: 0 auto;
+    background: @grey-dark;
+    div {
+    }
+  }
+}
+
+.footer {
+  padding: 0 20%;
+  //background: @grey-light;
+  .inner-footer {
+    padding: 50px 0;
+  }
+  &__text {
+    text-align: center;
+    display: block;
+    padding: 7px;
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+//Code generatet from enjoycss.com
+.gradient-pattern {
+  background: url("/images/background.png");
+
+}
+
+.background-pattern {
+  height: 100%;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+}
