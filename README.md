@@ -1,3 +1,5 @@
 # myHomepage
 
-EIne Website um mich besser kennenzulernen
+Eine Website um mich besser kennenzulernen.
+
+www.mariowymann.ch
